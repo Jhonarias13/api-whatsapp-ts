@@ -3,8 +3,19 @@ import LeadRepository from "../../domain/lead.repository";
 
 class MockRepository implements LeadRepository {
   getDetail(id: string): Promise<Lead | null | undefined> {
-      throw new Error("Method not implemented.");
+    throw new Error("Method not implemented.");
   }
+
+  getMessageByID(phone: string): Promise<Lead | null | undefined> {
+    const MOCK_LEAD: Lead = {
+      uuid: "00---000",
+      message: "test",
+      phone: "00000",
+    };
+
+    return Promise.resolve(MOCK_LEAD)
+  }
+
   save(): Promise<Lead> {
     const MOCK_LEAD: Lead = {
       uuid: "00---000",

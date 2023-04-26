@@ -7,6 +7,8 @@ const router: Router = Router();
  * http://localhost/lead POST
  */
 const leadCtrl: LeadCtrl = container.get("lead.ctrl");
+
 router.post("/", leadCtrl.sendCtrl);
+router.get("/", leadCtrl.getMsgCtrl);
 
 export { router };
