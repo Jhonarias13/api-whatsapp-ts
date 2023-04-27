@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <title>⚡️ API Whatsapp - Pharmarket</title>
+  <style>
+    html,
+    body .container {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-self: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="
+                display: flex;
+                gap: 2rem;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            ">
+    <img style="
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                    border-radius: 15px;
+                    object-fit: contain;
+                " width="400" height="400" src="./qr.png" alt="Escanear QR" />
+    <div style="width: 400px; display: grid; gap: 1rem">
+      <h1 style="margin: 0">API WHATSAPP 💬</h1>
+      <p>
+        <small>F5 para actualizar, el código se actualiza cada minuto. </small>
+        <br />
+        <br />
+        <strong id="clock">El Código QR se actualizará automaticamente en 00:01:00</strong>
+        <!-- Con esta libreria, puedes configurar respuestas
+                    automatizadas para preguntas frecuentes , recibir y
+                    responder mensajes de manera automatizada, y hacer un
+                    seguimiento de las interacciones con los clientes. Además,
+                    nuestro Chatbot se integra fácilmente con otros sistemas y
+                    herramientas que ya esté utilizando en su negocio. -->
+      </p>
+      <div>
+        <!-- <p id="clock"></p> -->
+        <!-- <a id="realodButton" target="_blank" style="
+                            background: white;
+                            box-shadow: rgb(0 0 0 / 16%) 0px 10px 36px 0px,
+                                rgb(0 0 0 / 6%) 0px 0px 0px 1px;
+                            padding: 10px;
+                            border-radius: 5px;
+                            font-weight: 600;
+                            text-decoration: none;
+                            color: #1a1a1a;
+                            border: solid 1px #afafaf;
+                        " href="/">Refrescar QR</a> -->
+
+      </div>
+    </div>
+  </div>
+
+  <footer style="
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 24px 0;
+  ">
+    Powered By <a href="http://www.pharmarket.co" target="_blank" rel="noopener noreferrer">
+      <img style="
+      position: relative;
+      top: 8px;
+      margin-left: 12px;
+    " src="./images/pharmarket.svg" alt="pharmarket">
+    </a>
+  </footer>
+
+  <script>
+    'use strict'
+    let clock = document.querySelector('#clock');
+    let timer = 60;
+    function countDown() {
+      setInterval(() => {
+        --timer;
+
+        if (timer <= 0) {
+          timer = 0;
+          location.reload();
+          return;
+        }
+
+        clock.innerText = `El Código QR se actualizará automaticamente en 00:00:${timer < 10 ? '0' + timer : timer}`
+      }, 1000);
+    }
+
+    window.onload = () => {
+      countDown()
+    }
+
+  </script>
+</body>
+
+</html>

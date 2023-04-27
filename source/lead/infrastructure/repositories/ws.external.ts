@@ -14,22 +14,22 @@ class WsTransporter extends Client implements LeadExternal {
       puppeteer: { headless: true },
     });
 
-    console.log("Iniciando....");
+    console.log("⚡️ Iniciando API...");
 
     this.initialize();
 
     this.on("ready", () => {
       this.status = true;
-      console.log("LOGIN_SUCCESS");
+      console.log("✅ Proveedor conectado y listo");
     });
 
     this.on("auth_failure", () => {
       this.status = false;
-      console.log("LOGIN_FAIL");
+      console.log("❌ LOGIN_FAIL, Elimina la carpeta `.wwebjs_auth` e intenta de nuevo.");
     });
 
     this.on("qr", (qr) => {
-      console.log('Escanea el codigo QR que esta en la carepta tmp')
+      console.log('Escanea el codigo QR.')
       this.generateImage(qr)
     });
   }
@@ -55,9 +55,9 @@ class WsTransporter extends Client implements LeadExternal {
   }
 
   private generateImage = (base64: string) => {
-    const path = `${process.cwd()}/tmp`;
-    let qr_svg = imageQr(base64, { type: "svg", margin: 4 });
-    qr_svg.pipe(require("fs").createWriteStream(`${path}/qr.svg`));
+    const path = `${process.cwd()}/public`;
+    let qr_png = imageQr(base64, { type: "png", margin: 4 });
+    qr_png.pipe(require("fs").createWriteStream(`${path}/qr.png`));
     console.log(`⚡ Recuerda que el QR se actualiza cada minuto ⚡'`);
     console.log(`⚡ Actualiza F5 el navegador para mantener el mejor QR⚡`);
   };
