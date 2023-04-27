@@ -6,16 +6,6 @@ class MockRepository implements LeadRepository {
     throw new Error("Method not implemented.");
   }
 
-  getMessageByID(phone: string): Promise<Lead | null | undefined> {
-    const MOCK_LEAD: Lead = {
-      uuid: "00---000",
-      message: "test",
-      phone: "00000",
-    };
-
-    return Promise.resolve(MOCK_LEAD)
-  }
-
   save(): Promise<Lead> {
     const MOCK_LEAD: Lead = {
       uuid: "00---000",

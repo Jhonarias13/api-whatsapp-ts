@@ -10,6 +10,4 @@ export default interface LeadRepository {
   }): Promise<Lead | undefined | null>;
 
   getDetail(id: string): Promise<Lead | null | undefined>;
-
-  getMessageByID(phone: string): Promise<Lead | null | undefined>;
 }

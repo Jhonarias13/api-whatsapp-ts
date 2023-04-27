@@ -21,10 +21,4 @@ export class LeadCreate {
     const responseExSave = await this.leadExternal.sendMsg({ message, phone });//TODO enviar a ws
     return { responseDbSave, responseExSave };
   }
-
-  public async getMessagesByPhone(phone: string) {
-    const response = await this.leadRepository.getMessageByID(phone);
-
-    return response;
-  }
 }
